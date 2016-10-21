@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cytoscape</title>
+
+<link rel="stylesheet" type="text/css" href="bower_components/js.cytoscape-navigator/cytoscape.js-navigator.css">
+<link rel="stylesheet" type="text/css" href="main.css">
+<link href="bower_components/cytoscape-panzoom/cytoscape.js-panzoom.css" rel="stylesheet" type="text/css" />
+<link href="bower_components/cytoscape-panzoom/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="controls.js"></script>
+
+</head>
+<body>
+
+<h2 class="title">Hello Cytoscape</h2>
+<hr>
+<div id="cy">
+	
+</div>
+
+<div class="controls">
+	<button onclick="fit()" class="btn">Fit</button>
+	<button onclick="reset()" class="btn">Reset</button>
+	<button onclick="png()" class="btn">View as Image</button>
+	<br><br>
+	Custom Panning Position
+	<label>
+		X:
+		<input type="number" name="x" id="ex">
+	</label>
+	<label>
+		Y:
+		<input type="number" name="y" id="yi">
+	</label>
+	<button onclick="set()" class="btn">Set</button>
+	<br><br>
+	<button onclick="left()" class="btn">left</button>
+	<button onclick="down()" class="btn">down</button>
+	<button onclick="up()" class="btn">up</button>
+	<button onclick="right()" class="btn">right</button>
+</div>
+
+
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="bower_components/cytoscape/dist/cytoscape.js"></script> 
+<script src="bower_components/cytoscape-panzoom/cytoscape-panzoom.js"></script>
+<script type="text/javascript" src="bower_components/js.cytoscape-navigator/cytoscape.js-navigator.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>

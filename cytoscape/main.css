@@ -1,0 +1,72 @@
+.wrapper {
+	width: 100vw;
+	margin: 0 auto;
+	position: relative;
+	height: auto;
+	padding: 0;
+}
+
+.title {
+	text-align: center;
+}
+
+.controls {
+
+	border: 1px solid black;
+	float: right;
+	padding: 10px;
+	width: 200px;
+	clear: none;
+	margin-top: 37vh;
+	width: 21.6vw;
+	margin-right: 30px;
+}
+
+#cy {
+	position: relative;
+	display: block;
+	width: 71.5vw;
+	height: 80vh;
+	border: 1px solid black;
+	margin: 0 10px;
+	display: inline-block;
+	float: left;
+}
+
+.console {
+	position: relative;
+}
+
+.cytoscape-navigator{
+	position: absolute;
+	right: 25px;
+	top: 0;
+	border: 1px solid #000;
+	background: #fff;
+	z-index: 99999;
+	width: 24vw;
+	height: 35vh;
+	overflow: hidden;
+	/*float: right;*/
+}
+
+@media only screen and (min-width: 1100px) {
+	#cy {
+		width: 72vw;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	#cy {
+		width: 72.5vw;
+	}
+}
+@media only screen and (min-width: 1400px) {
+	#cy {
+		width: 73vw;
+	}
+}
+@media only screen and (min-width: 1600px) {
+	#cy {
+		width: 73.5vw;
+	}
+}
