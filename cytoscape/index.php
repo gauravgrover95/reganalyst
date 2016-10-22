@@ -99,7 +99,7 @@ $tags = $_SESSION['search_tags'];
 		cy.animate({
 		  fit: { 
 		  	eles: name,
-		  	padding: 200
+		  	padding: 220
 		  }
 		}, { duration: 700 });
 
