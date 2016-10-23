@@ -1,9 +1,11 @@
 <?php
 
-echo "Hello World";
+session_start();
 
 require "./includes/models/unique_nodes.php";
 require "./includes/models/all.php";
+
+$_SESSION['search_tags'] = $tags;
 
 $myfile = fopen("./cytoscape/new.js", "w") or die("Unable to open file!");
 
@@ -60,6 +62,12 @@ style: [
       'content': '',
     }
   },
+  {
+    selector: '.selected',
+    style: {
+      'background-color': 'brown',
+    }
+  },
 ],
 
 layout: {
@@ -73,6 +81,8 @@ cy.panningEnabled(true);
 cy.boxSelectionEnabled(true);
 
 cy.autounselectify(true);
+
+var ur = cy.undoRedo();
 
 // Function to range colors green to yellow to red from 0 to 100
 function GreenYellowRed(number) {

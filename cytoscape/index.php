@@ -44,16 +44,25 @@ $tags = $_SESSION['search_tags'];
 ?>
 
 
+	<div class="scores">
+		<p>Score: <span id="perturb">100%</span></p>
+	</div>
 <!-- This is the div for controls -->
 	<div class="controls">  
-		<input type="text" name="search-bar" id="search-bar"> <button id="search-button">Search</button>
+		<input type="text" name="search-bar" id="search-bar" placeholder="Enter Gene Name"> <button id="search-button">Search</button>
 		<br><br>
-		<input type="text" name="delete" id="del"> <button onclick="abc()">Delete</button>
+		<input type="text" name="delete" id="del" placeholder="Enter Gene Name"> <button onclick="deleteNode()">Delete</button>
 		<br><br>
+		<input type="text" name="restore" id="rest" placeholder="Under Construction"> <button onclick="restoreNode()">Restore</button>
+		<br><br>
+		<button onclick="undo()" class="btn">Undo</button>
+		<button onclick="redo()" class="btn">Redo</button>
 		<button onclick="reset()" class="btn">Reset</button>
 		<button onclick="png()" class="btn">Save as Image</button>
 		<button id="hide-ends-button" onclick="hide()">Hide Ends</button>
 	</div>
+
+
 
 	<div class="console">
 		<!-- This is the main div for map -->
@@ -66,59 +75,9 @@ $tags = $_SESSION['search_tags'];
 <script type="text/javascript" src="bower_components/cytoscape/dist/cytoscape.js"></script> 
 <script src="bower_components/cytoscape-panzoom/cytoscape-panzoom.js"></script>
 <script type="text/javascript" src="bower_components/js.cytoscape-navigator/cytoscape.js-navigator.js"></script>
+<script type="text/javascript" src="bower_components/cytoscape.js-undo-redo-master/cytoscape-undo-redo.js"></script>
 <script type="text/javascript" src="new.js"></script>
 <script type="text/javascript" src="controls.js"></script>
-<script type="text/javascript">
-
-	RegExp.escape = function(text) {
-	  return text.replace(/[-[\]{}()*+?.,\\^$|\s]/g, "\\$&");
-	};
-
-
-	// This method is not good it traverses over all the nodes again which is useless
-	// ideal will be just select the particular node and use the remove method corresponding to that id
-	// for that 1. method is to use the regular expression to escape the brackets in id while using the node id and pass it as selector
-	// other is to just remove the concept of brackets from the node ids but to that we need to apply qTip to give Full information about the node while we will just use the Annotation for node Key identifier
-	function abc() {
-		var name = $('#del').val();
-
-		name = RegExp.escape(name);
-		name = '#' + name;
-		console.log(name);
-		cy.elements(name).remove();
-
-	}
-
-
-	$("#search-button").click(animate);
-
-	function animate() {
-
-		var name = $('#search-bar').val();
-		name = '#' + RegExp.escape(name);
-		cy.animate({
-		  fit: { 
-		  	eles: name,
-		  	padding: 220
-		  }
-		}, { duration: 700 });
-
-		cy.elements(name).animate({
-			style: {
-				backgroundColor: 'brown'
-			}}, {
-				duration: 1000
-		});
-	}
-
-	function hide() {
-		cy.elements('node').forEach(function(ele) {
-			if(!ele.isParent()) console.log('element is not a parent');
-		});	
-	}
-
-</script>
-
 
 </body>
 </html>

@@ -121,6 +121,12 @@ style: [
       'target-arrow-color': '#60d69d',
     }
   },
+  {
+    selector: '.selected',
+    style: {
+      'background-color': 'brown',
+    }
+  },
 ],
 
 layout: {
@@ -134,6 +140,8 @@ cy.panningEnabled(true);
 cy.boxSelectionEnabled(true);
 
 cy.autounselectify(true);
+
+var ur = cy.undoRedo();
 
 // Function to range colors green to yellow to red from 0 to 100
 function GreenYellowRed(number) {
