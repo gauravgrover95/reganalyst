@@ -25,6 +25,10 @@
 	font-weight: bold;
 }
 
+.scores #sign {
+	font-weight: bold;
+}
+
 .controls {
 
 	border: 1px solid black;
@@ -62,7 +66,6 @@
 	width: 24vw;
 	height: 35vh;
 	overflow: hidden;
-	/*float: right;*/
 }
 
 @media only screen and (min-width: 1100px) {

@@ -14,8 +14,28 @@ $tags = $_SESSION['search_tags'];
 
 <link href="bower_components/cytoscape-panzoom/cytoscape.js-panzoom.css" rel="stylesheet" type="text/css" />
 <link href="bower_components/cytoscape-panzoom/font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
 <link rel="stylesheet" type="text/css" href="main.css">
+<style type="text/css">
+	body {
+		background: #dddddd;
+
+	}
+
+	.cytoscape-navigator {
+		background: #eee;
+	}
+
+	#cy {
+		background: #eee;
+	}
+
+	button {
+		background: black;
+		color: white;
+		border: white;
+		border-radius: 2px;
+	}
+</style>
 
 <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui/jquery-ui.min.js"></script>
@@ -32,6 +52,10 @@ $tags = $_SESSION['search_tags'];
 		    $("#search-bar").autocomplete({
 		      source: availableTags
 		    });
+
+		    $("#delwl").autocomplete({
+		      source: availableTags
+		    });
 		});
 </script>
 
@@ -45,13 +69,15 @@ $tags = $_SESSION['search_tags'];
 
 
 	<div class="scores">
-		<p>Score: <span id="perturb">100%</span></p>
+		<p>Score: <span id="perturb">100</span><span id="sign">%</span></p>
 	</div>
 <!-- This is the div for controls -->
 	<div class="controls">  
 		<input type="text" name="search-bar" id="search-bar" placeholder="Enter Gene Name"> <button id="search-button">Search</button>
 		<br><br>
 		<input type="text" name="delete" id="del" placeholder="Enter Gene Name"> <button onclick="deleteNode()">Delete</button>
+		<br><br>
+		<input type="text" name="deletewl" id="delwl" placeholder="Enter Gene Name"> <button onclick="deleteWithLeaves()">Delete With Leaves</button>
 		<br><br>
 		<input type="text" name="restore" id="rest" placeholder="Under Construction"> <button onclick="restoreNode()">Restore</button>
 		<br><br>
@@ -60,6 +86,8 @@ $tags = $_SESSION['search_tags'];
 		<button onclick="reset()" class="btn">Reset</button>
 		<button onclick="png()" class="btn">Save as Image</button>
 		<button id="hide-ends-button" onclick="hide()">Hide Ends</button>
+		<button onclick="undoAll()" class="btn">Undo All</button>
+		<button onclick="redoAll()" class="btn">Redo All</button>
 	</div>
 
 
@@ -73,11 +101,17 @@ $tags = $_SESSION['search_tags'];
 
 
 <script type="text/javascript" src="bower_components/cytoscape/dist/cytoscape.js"></script> 
+<!-- <script type="text/javascript" src="bower_components/cytoscape.js-master/dist/cytoscape.js"></script>  -->
 <script src="bower_components/cytoscape-panzoom/cytoscape-panzoom.js"></script>
 <script type="text/javascript" src="bower_components/js.cytoscape-navigator/cytoscape.js-navigator.js"></script>
 <script type="text/javascript" src="bower_components/cytoscape.js-undo-redo-master/cytoscape-undo-redo.js"></script>
+<script type="text/javascript" src="bower_components/cytoscape.js-context-menus-master/cytoscape-context-menus.js"></script>
 <script type="text/javascript" src="new.js"></script>
 <script type="text/javascript" src="controls.js"></script>
+
+<script type="text/javascript">
+	// cy.edges().css('line-color', '#999');
+</script>
 
 </body>
 </html>
