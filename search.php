@@ -77,19 +77,39 @@ $graph2->edges = $hash2;
 $output2 = $graph2->BFStraversal($query_gene);
 ?>
 
+<html>
+<head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <style type="text/css">
 	thead {
 		font-weight: bold;
 		font-size: 18px;
 	}
+
+	h2 {
+		text-align: center;
+	}
+
 	p {
-		float: right;
+		text-align: center;
+		margin-right: 16px;
+		font-size: 20px;
+		border: 3px dashed black;
+		padding: 3px;
 	}
 </style>
+
+<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<h2><?= $query_gene ?></h2>
 <p>Click <a href='./cytoscape/'>here</a> to view map</p>
 <br>
-<table border='1px solid black'>
+<table class="table table-striped">
 <thead>
 	<tr>
 		<td>S.No:</td>
@@ -138,6 +158,13 @@ foreach($output2["edges"] as $key => $value) {
 }
 
 echo "</table>";
+
+?>
+
+</body>
+</html>
+
+<?php
 
 $tags = array_unique($tags);
 $_SESSION['search_tags'] = $tags;

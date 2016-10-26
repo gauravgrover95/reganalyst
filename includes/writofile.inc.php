@@ -25,7 +25,8 @@ EOD;
 foreach($output["nodes"] as $node) {
 
 $txt .= "{ // node $node
-  data: { id: '$node' }
+  data: { id: '$node' },
+  classes: 'regulated'
 },
 ";
 	
@@ -55,7 +56,8 @@ foreach($output["edges"] as $key => $value) {
 foreach($output2["nodes"] as $node) {
 
 $txt .= "{ // node $node
-  data: { id: '$node' }
+  data: { id: '$node' },
+  classes: 'regulator'
 },
 ";
   
@@ -86,20 +88,20 @@ $txt .= <<<EOD
 
 style: [
   {
-  	selector: 'node',
-  	style: {
-  		'background-color': '#10b578',
-  		'label': 'data(id)'
-  	}
+    selector: 'node',
+    style: {
+      'background-color': '#935116',
+      'label': 'data(id)'
+    }
   },
   {
-  	selector: 'edge',
-  	style: {
-  		'width': 3,
-  		'line-color': '#ccc',
-  		'target-arrow-color': '#ccc',
-  		'target-arrow-shape': 'triangle'
-  	}
+    selector: 'edge',
+    style: {
+      'width': 4,
+      'line-color': '#212F3D',
+      'target-arrow-color': '#212F3D',
+      'target-arrow-shape': 'triangle'
+    }
   },
   {
     selector: '.hide-labels',
@@ -110,15 +112,30 @@ style: [
   {
     selector: '.regulated-line',
     style: {
-      'line-color': '#64a8d6',
-      'target-arrow-color': '#64a8d6',
+      'line-color': '#AEB6BF',
+      'target-arrow-color': '#AEB6BF',
     }
   },
   {
     selector: '.regulator-line',
     style: {
-      'line-color': '#60d69d',
-      'target-arrow-color': '#60d69d',
+      'line-color': '#AEB6BF',
+      'target-arrow-color': '#AEB6BF',
+      'line-style': 'dashed'
+    }
+  },
+  {
+    selector: '.regulated',
+    style: {
+      'background-color': '#FF5D56',
+      'label': 'data(id)'
+    }
+  },
+  {
+    selector: '.regulator',
+    style: {
+      'background-color': '#FFBD35',
+      'label': 'data(id)'
     }
   },
   {
@@ -143,24 +160,6 @@ cy.autounselectify(true);
 
 var ur = cy.undoRedo();
 
-// Function to range colors green to yellow to red from 0 to 100
-function GreenYellowRed(number) {
-  number--; // working with 0-99 will be easier
-
-  if (number < 50) {
-    // green to yellow
-    var r = Math.floor(255 * (number / 50));
-    var g = 255;
-
-  } else {
-    // yellow to red
-    var r = 255;
-    var g = Math.floor(255 * ((50-number%50) / 50));
-  }
-  var b = 0;
-
-  return r + ',' + g + ',' + b;
-}
 
 // Script to increase the size of every node in the graph proportional to the number of edges
 var f = 25; // factor by which size should increase proportionally
@@ -174,7 +173,6 @@ cy.elements('node').forEach(function(ele) {
   ele.css({
     'height': n*f,
     'width': n*f, 
-    'background-color': 'rgb(' + GreenYellowRed(c) + ')'
   });
 
 });

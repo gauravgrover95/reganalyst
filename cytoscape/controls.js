@@ -91,6 +91,7 @@ function deleteWithLeaves(ele) {
 		if(ele.connectedEdges().length == 1) ur.do("deleteEles", ele);
 	});
 	ur.do("deleteEles", ele);
+	$('#delwl').val('');
 }
 
 
@@ -140,6 +141,7 @@ function deleteNode() {
 	var selector = '#' + id;
 	ele = cy.nodes(selector);
 	ur.do("deleteEles", ele);
+	$('#del').val('');
 }
 
 // function restoreNode() {
@@ -199,6 +201,7 @@ function animate() {
 	  }
 	}, { duration: 700 });
 
+	$('#search-bar').val('');
 }
 
 function hide() {

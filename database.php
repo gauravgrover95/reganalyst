@@ -8,6 +8,10 @@ include "./includes/models/unique_nodes.php";
 <html>
 <head>
 	<title>MycoRegDB</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 	<style type="text/css">
 		thead {
@@ -19,6 +23,10 @@ include "./includes/models/unique_nodes.php";
 			margin-bottom: 8px;
 		}
 
+		#tags {
+			margin-left: 8px;
+		}
+
 		form {
 			display: inline-block;
 			width: 350px;
@@ -26,11 +34,23 @@ include "./includes/models/unique_nodes.php";
 
 		.map {
 			float: right;
+			margin-right: 15px;
+		}
+
+		.seq {
+			width: 20px;
+		}
+
+		table {
+			width: 100vw;
 		}
 	</style>
 
 	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui/jquery-ui.min.js"></script>	
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -44,7 +64,7 @@ include "./includes/models/unique_nodes.php";
 <div class="map">Click <a href="./database-map.php">here</a> to view complete map</div>
 </div>
 
-<table border='1px solid black'>
+<table class="table table-striped">
 <thead>
 <tr>
 	<td>Serial</td>
@@ -72,7 +92,7 @@ echo "
   <td>$row[4]</td>
   <td>$row[5]</td>
   <td>$row[6]</td>
-  <td>$row[7]</td>
+  <td style='width:10px'>$row[7]</td>
 </tr>";
 ++$i;
 }
